@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fourty Four Predictors</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+  .nav-links a {
+  text-decoration: none;          /* Removes underline */
+  background: #1a1a1a;            /* Button background */
+  color: #ffcc00;                 /* Text color */
+  padding: 0.5rem 1rem;           /* Spacing */
+  border-radius: 25px;            /* Rounded corners */
+  font-weight: 500;
+  border: 1px solid #ffcc00;      /* Outline border */
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: #ffcc00;            /* Gold fill on hover */
+  color: #000;                    /* Dark text when hovered */
+  transform: scale(1.05);         /* Slight grow effect */
+}
+
+.nav-links a.active {
+  background: #ffcc00;            /* Active button gold */
+  color: #000;
+  border-color: #e6b800;
+}
+.vip-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .vip-buttons a {
+      text-decoration: none;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: 0.3s;
+      display: block;
+    }
+
+
+</style>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo">
+        ⚽ <span>Fourty Four Predictors</span>
+      </div>
+
+      <!-- Hamburger menu -->
+      <!--button class="menu-toggle" id="menuToggle">☰</button-->
+
+      <nav class="nav-links" id="navLinks">
+        
+      </nav>
+
+      <!--div class="header-cta">
+        <button class="join-btn">Join Telegram</button>
+      </div>
+    </div-->
+  </header>
+
+  <!-- ===== TOP AD ===== -->
+<div class="top-ad">
+  <div class="video-container">
+    <video id="promoVideo" poster="image/tunbill-2.jpeg">
+      <source src="#" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-overlay" id="videoOverlay">
+      <h3>🎥 Watch Chelsea vs Liverpool Highlights</h3>
+      <p>Click the button below to watch</p>
+      <button id="watchBtn">▶ Watch Now</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <!-- ===== APP WRAPPER ===== -->
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>⚽ Fourty Four Predictors</h2>
+        <button class="close-btn" id="closeSidebar">✕</button>
+      </div>
+
+   <nav class="nav" style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:10px; background:#0d0d0d; border-radius:8px;">
+  <button class="nav-btn active" 
+    style="background:#ffcc00; color:#000; border:none; padding:10px 18px; border-radius:30px; font-weight:600; cursor:pointer; transition:0.3s; font-family:Poppins, sans-serif;">
+    Home
+  </button>
+
+  <a href="about.html" class="nav-btn" 
+    style="background:#1a1a1a; color:#f1f1f1; text-decoration:none; padding:10px 18px; border-radius:30px; font-weight:600; border:1px solid #333; transition:0.3s; font-family:Poppins, sans-serif;">
+    About Us
+  </a>
+
+   <a href="#" class="nav-btn" 
+    style="background:#1a1a1a; color:#f1f1f1; text-decoration:none; padding:10px 18px; border-radius:30px; font-weight:600; border:1px solid #333; transition:0.3s; font-family:Poppins, sans-serif;">
+    Bonus Links
+  </a>
+
+  <a href="contact.html" class="nav-btn" 
+    style="background:#1a1a1a; color:#f1f1f1; text-decoration:none; padding:10px 18px; border-radius:30px; font-weight:600; border:1px solid #333; transition:0.3s; font-family:Poppins, sans-serif;">
+    Contact Us
+  </a>
+
+  <a href="history-page.html" class="nav-btn" 
+    style="background:#1a1a1a; color:#f1f1f1; text-decoration:none; padding:10px 18px; border-radius:30px; font-weight:600; border:1px solid #333; transition:0.3s; font-family:Poppins, sans-serif;">
+    History
+  </a>
+
+  <a href="shop.html" class="nav-btn" 
+    style="background:#1a1a1a; color:#f1f1f1; text-decoration:none; padding:10px 18px; border-radius:30px; font-weight:600; border:1px solid #333; transition:0.3s; font-family:Poppins, sans-serif;">
+    Shop With Us
+  </a>
+</nav>
+
+
+      <div class="sidebar-ad">
+         <a href="https://sportpesa.com" target="_blank">
+      <img src="image/ad-1.jpeg" alt="Ad Banner">
+    </a>
+      </div>
+
+
+       <div class="sidebar-ad">
+         <a href="https://sportpesa.com" target="_blank">
+      <img src="image/SportPesa.jpg" alt="Ad Banner">
+    </a>
+      </div>
+
+
+      <footer class="sidebar-footer">
+        <small>© 2025 Football Predictor</small>
+      </footer>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="main-header">
+        <button id="openSidebar" class="menu-btn">☰</button>
+        <input type="text" placeholder="Search team or league..." class="search-box">
+        <button class="btn">Search</button>
+      </div>
+
+        <div class="vip-buttons">
+        <a href="premium-page.html" class="nav-btn">Join Our Premium Membership</a>
+         <a href="shop.html" class="nav-btn">Shop With Us</a>
+      </div>
+    <br>
+     <br>
+
+     <section class="predictions">
+
+  <div class="card">
+    <div class="card-meta">Premier League • 23:00</div>
+    <div class="teams">
+      <span>Man City</span>
+      <span class="vs">VS</span>
+      <span>Liverpool</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Over 2.5</span>
+      <span class="tip">Tip 2: BTTS</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">La Liga • 22:30</div>
+    <div class="teams">
+      <span>Real Madrid</span>
+      <span class="vs">VS</span>
+      <span>Atletico Madrid</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: 1X</span>
+      <span class="tip">Tip 2: Under 3.5</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Serie A • 21:45</div>
+    <div class="teams">
+      <span>Inter Milan</span>
+      <span class="vs">VS</span>
+      <span>Juventus</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Over 1.5</span>
+      <span class="tip">Tip 2: Draw</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Bundesliga • 20:30</div>
+    <div class="teams">
+      <span>Bayern Munich</span>
+      <span class="vs">VS</span>
+      <span>Borussia Dortmund</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: GG</span>
+      <span class="tip">Tip 2: Over 2.5</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Ligue 1 • 22:00</div>
+    <div class="teams">
+      <span>PSG</span>
+      <span class="vs">VS</span>
+      <span>Lyon</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Home Win</span>
+      <span class="tip">Tip 2: Over 2.5</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Eredivisie • 19:00</div>
+    <div class="teams">
+      <span>Ajax</span>
+      <span class="vs">VS</span>
+      <span>PSV Eindhoven</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: BTTS</span>
+      <span class="tip">Tip 2: Over 2.5</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Championship • 18:30</div>
+    <div class="teams">
+      <span>Leeds United</span>
+      <span class="vs">VS</span>
+      <span>Leicester City</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: 1X</span>
+      <span class="tip">Tip 2: Under 3.5</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Scottish Premiership • 21:00</div>
+    <div class="teams">
+      <span>Celtic</span>
+      <span class="vs">VS</span>
+      <span>Rangers</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Over 1.5</span>
+      <span class="tip">Tip 2: GG</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Turkish Super Lig • 20:00</div>
+    <div class="teams">
+      <span>Galatasaray</span>
+      <span class="vs">VS</span>
+      <span>Fenerbahce</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Home Win</span>
+      <span class="tip">Tip 2: Over 2.5</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Portugal Liga • 19:30</div>
+    <div class="teams">
+      <span>Benfica</span>
+      <span class="vs">VS</span>
+      <span>Porto</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: BTTS</span>
+      <span class="tip">Tip 2: Draw</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">MLS • 03:00</div>
+    <div class="teams">
+      <span>LA Galaxy</span>
+      <span class="vs">VS</span>
+      <span>Inter Miami</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Over 2.5</span>
+      <span class="tip">Tip 2: GG</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Super League Kenya • 17:00</div>
+    <div class="teams">
+      <span>Gor Mahia</span>
+      <span class="vs">VS</span>
+      <span>AFC Leopards</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: 1X</span>
+      <span class="tip">Tip 2: Under 3.5</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">CAF Champions League • 21:00</div>
+    <div class="teams">
+      <span>Al Ahly</span>
+      <span class="vs">VS</span>
+      <span>Esperance Tunis</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Home Win</span>
+      <span class="tip">Tip 2: Over 1.5</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">Europa League • 22:00</div>
+    <div class="teams">
+      <span>Roma</span>
+      <span class="vs">VS</span>
+      <span>Sporting Lisbon</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Over 2.5</span>
+      <span class="tip">Tip 2: GG</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-meta">UCL • 22:00</div>
+    <div class="teams">
+      <span>Barcelona</span>
+      <span class="vs">VS</span>
+      <span>Man United</span>
+    </div>
+    <div class="tip-box">
+      <span class="tip">Tip 1: Over 2.5</span>
+      <span class="tip">Tip 2: BTTS</span>
+    </div>
+  </div>
+
+</section>
+
+    </main>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h3>FPredictor</h3>
+        <p>Your reliable football prediction platform.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Today</a></li>
+          <li><a href="#">Tomorrow</a></li>
+          <li><a href="#">Weekend</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="socials">
+          <a href="https://www.facebook.com/">Facebook</a>
+          <a href="https://x.com/">Twitter</a>
+          <a href="https://telegram.com/">Telegram</a>
+            <a href="https://youtube.com/">You Tube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Fourty Four Predictors — All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===== JS SCRIPT ===== -->
+  <script>
+    // Wait for DOM to load before adding listeners
+    document.addEventListener('DOMContentLoaded', () => {
+      const sidebar = document.getElementById('sidebar');
+      const openBtn = document.getElementById('openSidebar');
+      const closeBtn = document.getElementById('closeSidebar');
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+
+      // Sidebar open/close
+      openBtn.addEventListener('click', () => sidebar.classList.add('show'));
+      closeBtn.addEventListener('click', () => sidebar.classList.remove('show'));
+
+      // Mobile top menu toggle
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    });
+
+const watchBtn = document.getElementById('watchBtn');
+
+watchBtn.addEventListener('click', () => {
+  // Open YouTube link in a new tab
+  window.open("https://youtu.be/vTpPiFOeOA0?si=doeHPPMrvTwFi-go");
+});
+
+
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recent Deliveries | Fourty Four Football Predictors</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f1115;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0f1115;
+      color: #ffc107;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .deliveries-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .delivery-card {
+      background: #0f1115;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      width: 100%;
+    }
+    .back{display:inline-block;margin-bottom:14px;color:var(--muted);text-decoration:none}
+
+    .delivery-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .delivery-card img {
+      width: 100%;
+      height: auto;
+      
+    }
+
+    .delivery-info {
+      padding: 15px;
+    }
+
+    .delivery-info h3 {
+   color: #ffc107;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .delivery-info p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: white;
+      background-color: green;
+      margin-top: 8px;
+    }
+    .history-filter {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: #eee;
+  border: none;
+  margin: 0 5px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #d2691e;
+  color: #fff;
+}
+
+    footer {
+      background-color: #0f1115;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Recent Deliveries</header>
+   <a href="shop.html" class="back">← Back to shop</a>
+   <div class="history-filter">
+      <button class="filter-btn active">Yesterday</button>
+      <button class="filter-btn">Last 7 Days</button>
+      <button class="filter-btn">Last 30 Days</button>
+    </div>
+
+  <div class="deliveries-container">
+
+      
+    <div class="delivery-card">
+      <img src="image/chelsea-blue.jpeg" alt="Delivery 1">
+      <div class="delivery-info">
+        <h3>Football Jersey Delivery - Nairobi</h3>
+        <p>Delivered to: John Mwangi</p>
+        <p>Date: Nov 5, 2025</p>
+        <span class="status">Delivered</span>
+      </div>
+    </div>
+
+    <div class="delivery-card">
+      <img src="image/pool-table.jpeg" alt="Delivery 2">
+      <div class="delivery-info">
+        <h3>Pool Table Delivery - Nakuru</h3>
+        <p>Delivered to: Kevin Kiptoo</p>
+        <p>Date: Nov 3, 2025</p>
+        <span class="status">Delivered</span>
+      </div>
+    </div>
+
+        <div class="delivery-card">
+      <img src="image/pool-table.jpeg" alt="Delivery 2">
+      <div class="delivery-info">
+        <h3>Pool Table Delivery - Nakuru</h3>
+        <p>Delivered to: Kevin Kiptoo</p>
+        <p>Date: Nov 3, 2025</p>
+        <span class="status">Delivered</span>
+      </div>
+    </div>
+
+        <div class="delivery-card">
+      <img src="image/pool-table.jpeg" alt="Delivery 2">
+      <div class="delivery-info">
+        <h3>Pool Table Delivery - Nakuru</h3>
+        <p>Delivered to: Kevin Kiptoo</p>
+        <p>Date: Nov 3, 2025</p>
+        <span class="status">Delivered</span>
+      </div>
+    </div>
+
+        <div class="delivery-card">
+      <img src="image/pool-table.jpeg" alt="Delivery 2">
+      <div class="delivery-info">
+        <h3>Pool Table Delivery - Nakuru</h3>
+        <p>Delivered to: Kevin Kiptoo</p>
+        <p>Date: Nov 3, 2025</p>
+        <span class="status">Delivered</span>
+      </div>
+    </div>
+
+    <div class="delivery-card">
+      <img src="image/football-boots.jpeg" alt="Delivery 3">
+      <div class="delivery-info">
+        <h3>Boots & Accessories - Eldoret</h3>
+        <p>Delivered to: Brenda Cherono</p>
+        <p>Date: Nov 2, 2025</p>
+        <span class="status">Delivered</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Fourty Four Football Predictors | All Rights Reserved
+  </footer>
+
+</body>
+</html>

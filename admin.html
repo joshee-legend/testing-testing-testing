@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel | Football Predictor</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="admin-wrapper">
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-logo">
+        ⚽ Fourty Four Predictor
+        <button class="close-btn" id="closeSidebar">✕</button>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="#" class="active">Dashboard</a>
+        <a href="#">Add Prediction</a>
+        <a href="#">Manage Predictions</a>
+        <a href="#">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <div class="admin-top">
+        <button id="openSidebar" class="menu-btn">☰</button>
+        <h1>Admin Dashboard</h1>
+      </div>
+
+      <section class="admin-section">
+        <h2>Add New Prediction</h2>
+
+        <form class="add-form">
+          <div class="form-row">
+            <label>League</label>
+            <input type="text" placeholder="e.g., Premier League">
+          </div>
+
+          <div class="form-row">
+            <label>Home Team</label>
+            <input type="text" placeholder="e.g., Arsenal">
+          </div>
+
+          <div class="form-row">
+            <label>Away Team</label>
+            <input type="text" placeholder="e.g., Chelsea">
+          </div>
+
+          <div class="form-row">
+            <label>Match Time</label>
+            <input type="time">
+          </div>
+
+          <div class="form-row">
+            <label>Tip</label>
+            <input type="text" placeholder="e.g., Over 2.5">
+          </div>
+
+          <div class="form-row">
+            <label>Odds</label>
+            <input type="text" placeholder="e.g., 1.85">
+          </div>
+
+          <div class="form-row">
+            <label>Category</label>
+            <select>
+              <option>Today</option>
+              <option>Tomorrow</option>
+              <option>Weekend</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn">Add Prediction</button>
+        </form>
+      </section>
+
+      <section class="admin-section">
+        <h2>Recent Predictions</h2>
+
+        <table class="predictions-table">
+          <thead>
+            <tr>
+              <th>League</th>
+              <th>Home</th>
+              <th>Away</th>
+              <th>Time</th>
+              <th>Tip</th>
+              <th>Odds</th>
+              <th>Category</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Premier League</td>
+              <td>Arsenal</td>
+              <td>Chelsea</td>
+              <td>18:00</td>
+              <td>Over 2.5</td>
+              <td>1.85</td>
+              <td>Today</td>
+              <td><button class="delete-btn">🗑️</button></td>
+            </tr>
+            <tr>
+              <td>La Liga</td>
+              <td>Real Madrid</td>
+              <td>Barcelona</td>
+              <td>22:00</td>
+              <td>BTTS</td>
+              <td>1.70</td>
+              <td>Weekend</td>
+              <td><button class="delete-btn">🗑️</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const sidebar = document.getElementById('adminSidebar');
+    const openBtn = document.getElementById('openSidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+
+    openBtn.addEventListener('click', () => sidebar.classList.add('show'));
+    closeBtn.addEventListener('click', () => sidebar.classList.remove('show'));
+  </script>
+</body>
+</html>

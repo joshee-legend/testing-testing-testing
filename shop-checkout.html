@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Fourty Four Predictors</title>
+  <style>
+    :root {
+      --bg:#0d0d0d;
+      --surface:#121212;
+      --card:#1b1b1b;
+      --muted:#bfc8cf;
+      --accent:#ffcc00;
+      --accent-dark:#e6b800;
+      --success:#2ecc71;
+      --radius:10px;
+      --max-width:1200px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      background:var(--bg);
+      color:#eef2f5;
+    }
+    a { text-decoration:none; color:inherit; }
+
+    /* HEADER */
+    .top-header {
+      background:var(--surface);
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      position:sticky;
+      top:0;
+      z-index:120;
+    }
+    .header-inner {
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 16px;
+      flex-wrap:wrap;
+    }
+    .logo { font-weight:800;color:var(--accent);font-size:1.15rem;display:flex;align-items:center;gap:8px }
+    .nav-links { display:flex; gap:10px; align-items:center; }
+    .nav-links a {
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      font-weight:600;
+      transition:all .18s ease;
+    }
+    .nav-links a:hover { background:var(--accent); color:#000; transform:translateY(-2px); border-color:var(--accent-dark); }
+    .nav-links a.active { background:var(--accent); color:#000; border-color:var(--accent-dark); }
+    .menu-toggle{display:none;}
+
+    /* CHECKOUT PAGE */
+    .checkout-container {
+      max-width:var(--max-width);
+      margin:32px auto;
+      padding:0 16px;
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:24px;
+    }
+    h1 { color:var(--accent); margin-bottom:16px; }
+    h2 { color:var(--accent); font-size:1.1rem; margin-bottom:8px; }
+
+    .card {
+      background:var(--card);
+      padding:20px;
+      border-radius:var(--radius);
+    }
+
+    .form-group {
+      display:flex;
+      flex-direction:column;
+      margin-bottom:12px;
+    }
+    label { font-weight:600; margin-bottom:4px; color:var(--muted); }
+    input, textarea, select {
+      padding:10px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:var(--surface);
+      color:#fff;
+    }
+    textarea { resize:none; height:70px; }
+
+    .payment-methods {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:12px;
+    }
+    .payment-methods label {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,0.05);
+      padding:10px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+    .payment-methods input[type="radio"] { accent-color:var(--accent); }
+
+    .order-summary ul {
+      list-style:none;
+      padding:0;
+      margin:0 0 12px;
+    }
+    .order-summary li {
+      display:flex;
+      justify-content:space-between;
+      padding:6px 0;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      color:var(--muted);
+    }
+    .order-summary li:last-child { border:none; }
+    .order-total {
+      font-weight:700;
+      color:var(--accent);
+      font-size:1.1rem;
+      margin-top:8px;
+    }
+    .checkout-btn {
+      width:100%;
+      background:var(--success);
+      border:none;
+      padding:12px 20px;
+      border-radius:8px;
+      font-weight:700;
+      color:#fff;
+      cursor:pointer;
+      font-size:1rem;
+      margin-top:16px;
+      transition:0.2s ease;
+    }
+    .checkout-btn:hover { background:#27ae60; }
+
+    /* FOOTER */
+    footer {
+      margin-top:24px;
+      border-top:1px solid rgba(255,255,255,0.03);
+      padding:20px 16px;
+      text-align:center;
+      color:var(--muted);
+      background:transparent;
+    }
+    footer a { color:var(--accent); text-decoration:none; font-weight:700; margin:0 6px; }
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .checkout-container {
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="top-header">
+    <div class="header-inner">
+      <div class="logo">⚽ Fourty Four Predictors</div>
+      <nav class="nav-links">
+        <a href="home-page.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+        <a href="checkout.html" class="active">Checkout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CHECKOUT CONTENT -->
+  <div class="checkout-container">
+    <!-- LEFT: Billing details -->
+    <div class="card">
+      <h1>Checkout</h1>
+      <h2>Billing Details</h2>
+      <form id="checkoutForm">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" required>
+        </div>
+        <div class="form-group">
+          <label>Delivery Address</label>
+          <textarea required></textarea>
+        </div>
+
+          <h2>Preferred Communication Method</h2>
+        <div class="payment-methods">
+          <label><input type="radio" name="payment" value="mpesa" required> Phone Call</label>
+          <label><input type="radio" name="payment" value="card"> Text Message</label>
+          <label><input type="radio" name="payment" value="cash"> WhatsApp</label>
+          <label><input type="radio" name="payment" value="cash"> Email</label>
+        </div>
+
+        <!--h2>Payment Method</h2>
+        <div class="payment-methods">
+          <label><input type="radio" name="payment" value="mpesa" required> M-Pesa</label>
+          <label><input type="radio" name="payment" value="card"> Debit/Credit Card</label>
+          <label><input type="radio" name="payment" value="cash"> Cash on Delivery</label>
+        </div-->
+
+        <a href="shop-final-checkout.html" class="checkout-btn" style="display:inline-block;text-align:center;text-decoration:none;">Proceed to Payment</a>
+      </form>
+    </div>
+
+    <!-- RIGHT: Order summary -->
+    <div class="card order-summary">
+      <h2>Order Summary</h2>
+      <ul>
+        <li><span>Football Jersey</span><span>Ksh 2,000</span></li>
+        <li><span>Football Shoes</span><span>Ksh 4,500</span></li>
+      </ul>
+      <div class="order-total">Total: Ksh 6,500</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="premium.html">Premium</a>
+    </div>
+    <div>© 2025 Fourty Four Predictors — All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById("checkoutForm").addEventListener("submit", e => {
+      e.preventDefault();
+      alert("✅ Order placed successfully! Thank you for shopping with Fourty Four Predictors.");
+      window.location.href = "home-page.html";
+    });
+  </script>
+</body>
+</html>

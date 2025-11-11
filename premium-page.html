@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium VIP | Fourty Four Predictors</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #f1f1f1;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== HEADER ===== */
+    .top-header {
+      background-color: #111;
+      border-bottom: 1px solid #222;
+      color: #f1f1f1;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #ffcc00;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    #vip-odds h2{
+      align-items: center;
+
+    }
+
+  .nav-links a {
+  text-decoration: none;          /* Removes underline */
+  background: #1a1a1a;            /* Button background */
+  color: #ffcc00;                 /* Text color */
+  padding: 0.5rem 1rem;           /* Spacing */
+  border-radius: 25px;            /* Rounded corners */
+  font-weight: 500;
+  border: 1px solid #ffcc00;      /* Outline border */
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: #ffcc00;            /* Gold fill on hover */
+  color: #000;                    /* Dark text when hovered */
+  transform: scale(1.05);         /* Slight grow effect */
+}
+
+.nav-links a.active {
+  background: #ffcc00;            /* Active button gold */
+  color: #000;
+  border-color: #e6b800;
+}
+
+@media (max-width: 768px) {
+  .nav-links a {
+    display: block;
+    text-align: center;
+    margin: 0.4rem 0;
+  }
+}
+
+.history-filter {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: #eee;
+  border: none;
+  margin: 0 5px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #d2691e;
+  color: #fff;
+}
+
+
+    /* ===== MOBILE MENU BUTTON ===== */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+      font-size: 1.3rem;
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        right: -250px;
+        background: #111;
+        flex-direction: column;
+        width: 220px;
+        text-align: left;
+        padding: 1rem;
+        border-left: 1px solid #222;
+        border-bottom: 1px solid #222;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        height: calc(100vh - 70px);
+      }
+
+      .nav-links.show {
+        right: 0;
+      }
+
+      .nav-links a {
+        padding: 0.8rem 0;
+        display: block;
+        border-bottom: 1px solid #222;
+      }
+    }
+
+    /* ===== PREMIUM HERO ===== */
+    .premium-hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(145deg, #1a1a1a, #111);
+      border-bottom: 1px solid #222;
+    }
+
+    .premium-hero h1 {
+      color: #ffcc00;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .premium-hero p {
+      color: #ccc;
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .vip-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #ffcc00;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .vip-btn:hover {
+      background: #e6b800;
+      transform: scale(1.05);
+    }
+
+    /* ===== PREMIUM FEATURES ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+
+    .feature-card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+    }
+
+    .feature-card h3 {
+      color: #ffcc00;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-card p {
+      color: #bbb;
+      font-size: 0.95rem;
+    }
+
+    /* ===== VIP ODDS TABLE ===== */
+    .vip-odds {
+      max-width: 900px;
+      margin: 3rem auto;
+      
+      padding-top: 4rem;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+    }
+
+    .vip-odds h2 {
+      text-align: center;
+      color: #ffcc00;
+      margin-bottom: 1.5rem;
+    }
+     #vip-odds p{
+      align-items: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #ccc;
+      overflow-x: auto;
+    }
+
+    th, td {
+      padding: 0.9rem;
+      text-align: center;
+      border-bottom: 1px solid #333;
+      font-size: 0.95rem;
+    }
+
+    th {
+      background-color: #111;
+      color: #ffcc00;
+    }
+
+    tr:hover {
+      background-color: #151515;
+    }
+
+    footer {
+      background: #111;
+      padding: 1.5rem;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid #222;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="logo">⚽ Fourty Four Predictors</div>
+      <button id="menuToggle" class="menu-toggle">☰</button>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="#vip-odds">VIP Bet History</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="premium.html" class="active">Premium</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PREMIUM HERO ===== -->
+  <section class="premium-hero">
+    <h1>Join 1000+ of Our VIP Members</h1>
+    <p>
+      Unlock exclusive access to high-accuracy predictions, premium odds, and insider tips.  
+      Our VIP members enjoy guaranteed daily winning tips — carefully analyzed by experts.
+    </p>
+    <a href="vip-joining-landing-page.html" class="vip-btn">Join VIP Now</a>
+  </section>
+
+  <!-- ===== PREMIUM FEATURES ===== -->
+  <section class="features">
+    <div class="feature-card">
+      <h3>🔥 99% Win Rate</h3>
+      <p>Our experts analyze over 200+ matches weekly to provide near-accurate predictions.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>💰 High Value Odds</h3>
+      <p>Receive exclusive VIP odds that aren’t available in our free section.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>⏰ Early Access</h3>
+      <p>Get predictions before they’re released publicly — beat the market changes!</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>📈 Detailed Analysis</h3>
+      <p>Gain access to stats, performance data, and expert insights for every prediction.</p>
+    </div>
+
+      <div class="feature-card">
+      <h3>💰 High Value Odds</h3>
+      <p>Receive exclusive VIP odds that aren’t available in our free section.</p>
+    </div>
+
+     <div class="feature-card">
+      <h3>🔥 99% Win Rate</h3>
+      <p>Our experts analyze over 200+ matches weekly to provide near-accurate predictions.</p>
+    </div>
+  </section>
+
+  <!-- ===== VIP ODDS TABLE ===== -->
+  <section id="vip-odds" class="vip-odds">
+    <br>
+    <br>
+    <h2>Premium VIP Odds History</h2>
+    <p>Browse Through Our Past VIP Predictions History</p>
+
+     <div class="history-filter">
+      <button class="filter-btn active">Yesterday</button>
+      <button class="filter-btn">Last 7 Days</button>
+      <button class="filter-btn">Last 30 Days</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>League</th>
+          <th>Match</th>
+          <th>Tip</th>
+          <th>Odds</th>
+          <th>Date</th>
+          <th>Results</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Premier League</td>
+          <td>Man City vs Arsenal</td>
+          <td>Over 2.5 Goals</td>
+          <td>1.90</td>
+          <td>18:30</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>La Liga</td>
+          <td>Barcelona vs Sevilla</td>
+          <td>Home Win</td>
+          <td>1.75</td>
+          <td>21:00</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>Serie A</td>
+          <td>Napoli vs AC Milan</td>
+          <td>BTTS</td>
+          <td>1.85</td>
+          <td>20:45</td>
+          <td>❌</td>
+        </tr>
+               <tr>
+          <td>Premier League</td>
+          <td>Man City vs Arsenal</td>
+          <td>Over 2.5 Goals</td>
+          <td>1.90</td>
+          <td>18:30</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>La Liga</td>
+          <td>Barcelona vs Sevilla</td>
+          <td>Home Win</td>
+          <td>1.75</td>
+          <td>21:00</td>
+          <td>✅</td>
+        </tr>
+               <tr>
+          <td>Premier League</td>
+          <td>Man City vs Arsenal</td>
+          <td>Over 2.5 Goals</td>
+          <td>1.90</td>
+          <td>18:30</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>La Liga</td>
+          <td>Barcelona vs Sevilla</td>
+          <td>Home Win</td>
+          <td>1.75</td>
+          <td>21:00</td>
+          <td>✅</td>
+        </tr>
+               <tr>
+          <td>Premier League</td>
+          <td>Man City vs Arsenal</td>
+          <td>Over 2.5 Goals</td>
+          <td>1.90</td>
+          <td>18:30</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>La Liga</td>
+          <td>Barcelona vs Sevilla</td>
+          <td>Home Win</td>
+          <td>1.75</td>
+          <td>21:00</td>
+          <td>✅</td>
+        </tr>
+               <tr>
+          <td>Premier League</td>
+          <td>Man City vs Arsenal</td>
+          <td>Over 2.5 Goals</td>
+          <td>1.90</td>
+          <td>18:30</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>La Liga</td>
+          <td>Barcelona vs Sevilla</td>
+          <td>Home Win</td>
+          <td>1.75</td>
+          <td>21:00</td>
+          <td>✅</td>
+        </tr>
+               <tr>
+          <td>Premier League</td>
+          <td>Man City vs Arsenal</td>
+          <td>Over 2.5 Goals</td>
+          <td>1.90</td>
+          <td>18:30</td>
+          <td>✅</td>
+        </tr>
+        <tr>
+          <td>La Liga</td>
+          <td>Barcelona vs Sevilla</td>
+          <td>Home Win</td>
+          <td>1.75</td>
+          <td>21:00</td>
+          <td>✅</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Fourty Four Predictors — All Rights Reserved.</p>
+  </footer>
+
+  <!-- ===== SCRIPT ===== -->
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // You can filter content dynamically here
+  });
+});
+  </script>
+</body>
+</html>

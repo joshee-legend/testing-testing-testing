@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Shop 44</title>
+  <style>
+
+        :root{
+      --bg:#0d0d0d;
+      --surface:#121212;
+      --card:#1b1b1b;
+      --muted:#bfc8cf;
+      --accent:#ffcc00;
+      --accent-dark:#e6b800;
+      --success:#2ecc71;
+      --radius:10px;
+      --max-width:1200px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== HEADER STYLING ===== */
+    header {
+      background-color: #1a1a1a;
+      border-bottom: 2px solid #ff9800;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #ff9800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+ .nav-links a{
+      display:inline-block;
+      text-decoration:none; /* no underline */
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      font-weight:600;
+      transition:all .18s ease;
+    }
+    .nav-links a:hover{ background:var(--accent); color:#000; transform:translateY(-2px); border-color:var(--accent-dark) }
+    .nav-links a.active{ background:var(--accent); color:#000; border-color:var(--accent-dark) }
+
+
+
+    /* ===== MENU TOGGLE ===== */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: #ff9800;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 152, 0, 0.2);
+    }
+
+    h2 {
+      color: #ff9800;
+      margin-bottom: 10px;
+      border-left: 4px solid #ff9800;
+      padding-left: 10px;
+    }
+
+    p {
+      color: #bbb;
+      line-height: 1.6;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 25px;
+    }
+
+    input, textarea {
+      background: #2b2b2b;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #ff9800;
+      outline: none;
+      background: #262626;
+    }
+
+    textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    button {
+      background: #ff9800;
+      color: #121212;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #e68a00;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+    }
+
+    .contact-info p {
+      margin: 5px 0;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 25px;
+      background: #ff9800;
+      color: #121212;
+      padding: 10px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #e68a00;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      border-top: 1px solid #333;
+      color: #777;
+      font-size: 0.9em;
+    }
+
+    /* ===== RESPONSIVE HEADER ===== */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #1a1a1a;
+        flex-direction: column;
+        width: 220px;
+        text-align: left;
+        padding: 1rem;
+        border-left: 1px solid #222;
+        border-bottom: 1px solid #222;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+
+      nav.show {
+        transform: translateX(0);
+      }
+
+      nav a {
+        display: block;
+        padding: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">🏆 <span>Shop 44</span></div>
+    
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+        <a href="recent-deliveries.html">Recent Deliveries</a>
+        <a href="shop-44-about-page.html">About shop 44</a>
+      
+        <a href="faq.html">Shop 44 FAQS</a>
+        <a href="shop.html">Shop</a>
+      <a href="shop-44-contact-us-page.html" class="active">Contact Shop 44</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <h2>We’d Love to Hear from You!</h2>
+  <p>Have questions, feedback, or need help with your order? Our support team is ready to assist. Fill out the form below or reach us through our contact details.</p>
+
+  <form>
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="subject" placeholder="Subject" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <div class="contact-info">
+    <h2>Contact Details</h2>
+    <p>📍 Location: Nairobi, Kenya</p>
+    <p>📞 Phone: +254 712 345 678</p>
+    <p>✉️ Email: support@shop44.co.ke</p>
+    <p>🕒 Working Hours: Mon – Sat | 8:00 AM – 8:00 PM</p>
+  </div>
+
+  <a href="javascript:history.back()" class="back-btn">← Go Back</a>
+</div>
+
+<footer>
+  &copy; 2025 Shop 44. All rights reserved.
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('nav-links');
+
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('show');
+  });
+</script>
+
+</body>
+</html>

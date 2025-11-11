@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Dashboard | Fourty Four Predictors</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #0d0d0d;
+      color: #f1f1f1;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: 240px;
+      background: #111;
+      border-right: 1px solid #222;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    .sidebar .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffcc00;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: #222;
+      color: #ffcc00;
+    }
+
+    .sidebar .logout {
+      margin-top: auto;
+      background: #ffcc00;
+      color: #000;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .sidebar .logout:hover {
+      background: #e6b800;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .main-content {
+      margin-left: 240px;
+      flex: 1;
+      padding: 2rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #222;
+      border-radius: 10px;
+    }
+
+    header h1 {
+      color: #ffcc00;
+      font-size: 1.4rem;
+    }
+
+    .user-info {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    /* ===== VIP PREDICTIONS ===== */
+   .predictions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(2fr, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1b1f27;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.card-meta {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-bottom: 8px;
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.tip-box {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 50px;
+  color: #ccc;
+  gap: 20px;
+}
+
+.tip {
+  color: #ffc107;
+}
+
+    .download-btn {
+      display: inline-block;
+      background: #ffcc00;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #e6b800;
+      transform: scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      border-top: 1px solid #222;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        width: 240px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+      }
+      .sidebar.show { transform: translateX(0); }
+
+      .main-content {
+        margin-left: 0;
+        padding: 1rem;
+      }
+
+      .menu-toggle {
+        background: none;
+        border: 2px solid #ffcc00;
+        color: #ffcc00;
+        padding: 6px 10px;
+        font-size: 1.2rem;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="logo">⚽ VIP Access</div>
+    <a href="vip-dashboard.html" class="active">🏠 Dashboard</a>
+    <a href="#">💎 Premium Tips</a>
+    <a href="#">💎 Live Games Predictions</a>
+    <a href="#">💎 How To Play VIP Odds</a>
+     <a href="#">💎 Library</a>
+     <a href="#">💎 Trusted Betting Sites</a>
+     <a href="#">💎 Results</a>
+     <a href="#">💎 VIP Customer Support</a>
+    <a href="#">👤 My Account</a>
+    <a href="#" class="logout">Logout</a>
+  </aside>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <div class="main-content">
+    <header>
+      <h1>Welcome, VIP Member</h1>
+      <button class="menu-toggle" id="menuBtn">☰</button>
+      <div class="user-info">Member ID: <strong>#4412</strong> | Validity: 30 Days - Expiring in 24 Days</div>
+    </header>
+
+   
+      <section class="predictions">
+
+        
+        <!-- Sample Prediction Cards -->
+        <div class="card">
+          <h1>Uploaded 1 hr ago</h1>
+          <div class="card-meta">English Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">PREDICTION: FT - OVER 2.5 GOALS</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <div class="tip-box">
+            <span class="odd">RECOMMENDED STAKE: 10,000</span>
+            <span class="odd">POSSIBLE WIN: 18,000</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h1>Uploaded 30 mins ago</h1>
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+          <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <!--div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div-->
+        </div>
+
+
+        <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-meta">Premier League • 18:00</div>
+          <div class="teams">
+            <span>Arsenal</span>
+            <span class="vs">VS</span>
+            <span>Chelsea</span>
+          </div>
+          <div class="tip-box">
+            <span class="tip">Tip: Over 2.5</span>
+            <span class="odd">Odds: 1.85</span>
+          </div>
+          <div class="tip-box">
+            <span class="odd">Results: 3:1</span>
+            <span class="odd">Status: Won</span>
+          </div>
+        </div>
+        <!-- Duplicate this card for more matches -->
+      </section>
+
+    <footer>
+      © 2025 Fourty Four Predictors — VIP Members Area
+    </footer>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const sidebar = document.getElementById("sidebar");
+
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("show");
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop 44 | Frequently Asked Questions</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #f1f1f1;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #111;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #222;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #ffcc00;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .back-btn {
+      background: #ffcc00;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #e6b800;
+      transform: scale(1.05);
+    }
+
+    .faq-section {
+      max-width: 850px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h1 {
+      color: #ffcc00;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+
+    .faq {
+      background: #1a1a1a;
+      border-radius: 10px;
+      border: 1px solid #222;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .faq:hover {
+      box-shadow: 0 0 12px rgba(255, 204, 0, 0.2);
+    }
+
+    .faq-question {
+      background: #111;
+      color: #ffcc00;
+      padding: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 1rem;
+      color: #ccc;
+      background: #1a1a1a;
+      line-height: 1.6;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .faq.active .faq-answer {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #222;
+      color: #777;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.4rem;
+      }
+
+      .faq-question {
+        font-size: 1rem;
+      }
+
+      .faq-section {
+        padding: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🏆 Shop 44 Sports</div>
+    <button class="back-btn" onclick="window.history.back()">← Go Back</button>
+  </header>
+
+  <section class="faq-section">
+    <h1>Frequently Asked Questions (FAQs)</h1>
+
+    <div class="faq">
+      <div class="faq-question">1. What is Shop 44 Sports known for? <span>+</span></div>
+      <div class="faq-answer">Shop 44 specializes in quality sportswear, equipment, and accessories for all sports enthusiasts — from football kits to gym gear and outdoor items.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">2. Do you deliver nationwide? <span>+</span></div>
+      <div class="faq-answer">Yes! We deliver all over Kenya through trusted courier services and our own riders. Orders within Nairobi can be delivered the same day.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">3. How do I place an order? <span>+</span></div>
+      <div class="faq-answer">Simply visit our website, choose your products, and proceed to checkout. You can also order via WhatsApp or phone for fast assistance.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">4. What payment methods are accepted? <span>+</span></div>
+      <div class="faq-answer">We accept M-Pesa, PayPal, and cash on delivery. For online payments, we ensure maximum security for all transactions.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">5. Are your products genuine? <span>+</span></div>
+      <div class="faq-answer">Absolutely! We source directly from trusted brands and verified suppliers to guarantee authentic, durable sports items.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">6. Can I return or exchange an item? <span>+</span></div>
+      <div class="faq-answer">Yes. If you’re not satisfied with your purchase, you can request a return or exchange within 3 days of delivery, as long as the item is unused and in original packaging.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">7. Do you offer bulk discounts? <span>+</span></div>
+      <div class="faq-answer">Yes, we offer discounted rates for bulk or team orders — perfect for schools, clubs, and organizations. Contact us for a custom quote.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">8. How can I track my delivery? <span>+</span></div>
+      <div class="faq-answer">After placing your order, you’ll receive an SMS or WhatsApp message with tracking details or rider contact information for easy follow-up.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">9. What makes Shop 44 different? <span>+</span></div>
+      <div class="faq-answer">We stand out for our reliability, on-time delivery, and unbeatable prices — ensuring our customers always get value for their money.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-question">10. How can I contact customer support? <span>+</span></div>
+      <div class="faq-answer">You can reach us anytime via our Contact page, email, or WhatsApp. We respond quickly to ensure smooth service and customer satisfaction.</div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2025 Shop 44 Sports. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const faqs = document.querySelectorAll('.faq');
+    faqs.forEach(faq => {
+      faq.querySelector('.faq-question').addEventListener('click', () => {
+        faq.classList.toggle('active');
+        const icon = faq.querySelector('span');
+        icon.textContent = faq.classList.contains('active') ? '−' : '+';
+      });
+    });
+  </script>
+
+</body>
+</html>

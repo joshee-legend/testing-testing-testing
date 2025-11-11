@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History - Football Predictor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+
+      :root{
+      --bg:#0d0d0d;
+      --surface:#121212;
+      --card:#1b1b1b;
+      --muted:#bfc8cf;
+      --accent:#ffcc00;
+      --accent-dark:#e6b800;
+      --success:#2ecc71;
+      --radius:10px;
+      --max-width:1200px;
+    }
+    /* ===== HISTORY PAGE ===== */
+
+    /* ===== CUTE HEADER STYLING ===== */
+.top-header {
+ background: #1b1f27;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo span {
+  color: #ffe5b4; /* soft gold look */
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+    .nav-links a{
+      display:inline-block;
+      text-decoration:none; /* no underline */
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      font-weight:600;
+      transition:all .18s ease;
+    }
+    .nav-links a:hover{ background:var(--accent); color:#000; transform:translateY(-2px); border-color:var(--accent-dark) }
+    .nav-links a.active{ background:var(--accent); color:#000; border-color:var(--accent-dark) }
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #ffe5b4;
+  border-radius: 2px;
+}
+
+/* ===== MOBILE MENU ===== */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #1b1f27;
+    width: 200px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -3px 3px 10px rgba(0,0,0,0.2);
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+.history {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.history h2 {
+  text-align: center;
+  color: #d2691e;
+  font-size: 2rem;
+}
+
+.history .desc {
+  text-align: center;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.history-filter {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  background: #eee;
+  border: none;
+  margin: 0 5px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: #d2691e;
+  color: #fff;
+}
+
+.history-list {
+  display: grid;
+  gap: 15px;
+}
+
+.history-list .card {
+ background: #1b1f27;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 15px;
+}
+
+.history-list .card-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.history-list .teams {
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.history-list .vs {
+  color: #d2691e;
+}
+
+.history-list .tip-box {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.tip-box .result {
+  font-weight: bold;
+}
+
+.status {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.won {
+  color: green;
+}
+
+.status.lost {
+  color: red;
+}
+.footer{
+  text-align: center;
+}
+</style>
+<body>
+  <!-- ===== HEADER ===== -->
+<header class="top-header">
+  <div class="header-container">
+    <div class="logo">
+      ⚽ <span>FPredictor</span>
+    </div>
+
+    <nav class="nav-links" id="navLinks">
+       <a href="index.html">Home</a>
+         <a href="shop.html">Shop With Us</a>
+          <a href="premium-page.html">VIP Tips</a>
+        
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      <a href="history-page.html" class="active">Prediction History</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </div>
+</header>
+
+
+  <!-- ===== TOP AD ===== -->
+  <!--div class="top-ad">
+    <a href="https://your-sponsor.com" target="_blank">
+      <img src="images/betway.jpg" alt="Top Banner Ad">
+    </a>
+  </div-->
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="history">
+    <h2>📅 Match Prediction History</h2>
+    <p class="desc">Browse through our past football predictions and outcomes.</p>
+
+    <div class="history-filter">
+      <button class="filter-btn active">Yesterday</button>
+      <button class="filter-btn">Last 7 Days</button>
+      <button class="filter-btn">Last 30 Days</button>
+    </div>
+
+    <section class="history-list">
+      <div class="card">
+        <div class="card-meta">Premier League • 02 Nov</div>
+        <div class="teams">
+          <span>Arsenal</span>
+          <span class="vs">VS</span>
+          <span>Chelsea</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: Over 2.5</span>
+          <span class="odd">Odds: 1.85</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 3 - 1</span>
+          <span class="status won">Status: Won</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">La Liga • 28 Oct</div>
+        <div class="teams">
+          <span>Real Madrid</span>
+          <span class="vs">VS</span>
+          <span>Barcelona</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: BTTS</span>
+          <span class="odd">Odds: 1.75</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 0 - 0</span>
+          <span class="status lost">Status: Lost</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Serie A • 24 Oct</div>
+        <div class="teams">
+          <span>Inter Milan</span>
+          <span class="vs">VS</span>
+          <span>Juventus</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: 1X</span>
+          <span class="odd">Odds: 1.65</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 1 - 1</span>
+          <span class="status won">Status: Won</span>
+        </div>
+      </div>
+
+          <div class="card">
+        <div class="card-meta">Premier League • 02 Nov</div>
+        <div class="teams">
+          <span>Arsenal</span>
+          <span class="vs">VS</span>
+          <span>Chelsea</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: Over 2.5</span>
+          <span class="odd">Odds: 1.85</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 3 - 1</span>
+          <span class="status won">Status: Won</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">La Liga • 28 Oct</div>
+        <div class="teams">
+          <span>Real Madrid</span>
+          <span class="vs">VS</span>
+          <span>Barcelona</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: BTTS</span>
+          <span class="odd">Odds: 1.75</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 0 - 0</span>
+          <span class="status lost">Status: Lost</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Serie A • 24 Oct</div>
+        <div class="teams">
+          <span>Inter Milan</span>
+          <span class="vs">VS</span>
+          <span>Juventus</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: 1X</span>
+          <span class="odd">Odds: 1.65</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 1 - 1</span>
+          <span class="status won">Status: Won</span>
+        </div>
+      </div>
+
+          <div class="card">
+        <div class="card-meta">Premier League • 02 Nov</div>
+        <div class="teams">
+          <span>Arsenal</span>
+          <span class="vs">VS</span>
+          <span>Chelsea</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: Over 2.5</span>
+          <span class="odd">Odds: 1.85</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 3 - 1</span>
+          <span class="status won">Status: Won</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">La Liga • 28 Oct</div>
+        <div class="teams">
+          <span>Real Madrid</span>
+          <span class="vs">VS</span>
+          <span>Barcelona</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: BTTS</span>
+          <span class="odd">Odds: 1.75</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 0 - 0</span>
+          <span class="status lost">Status: Lost</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-meta">Serie A • 24 Oct</div>
+        <div class="teams">
+          <span>Inter Milan</span>
+          <span class="vs">VS</span>
+          <span>Juventus</span>
+        </div>
+        <div class="tip-box">
+          <span class="tip">Tip: 1X</span>
+          <span class="odd">Odds: 1.65</span>
+        </div>
+        <div class="tip-box">
+          <span class="result">Result: 1 - 1</span>
+          <span class="status won">Status: Won</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>© 2025 Football Predictor | Designed with ❤️ for football fans</p>
+  </footer>
+
+  <script>
+
+    const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+menuToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // You can filter content dynamically here
+  });
+});
+
+  </script>
+</body>
+</html>

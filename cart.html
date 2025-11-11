@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart | Fourty Four Predictors</title>
+  <style>
+    :root{
+      --bg:#0d0d0d;
+      --surface:#121212;
+      --card:#1b1b1b;
+      --muted:#bfc8cf;
+      --accent:#ffcc00;
+      --accent-dark:#e6b800;
+      --success:#2ecc71;
+      --radius:10px;
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background:var(--bg);
+      color:#eef2f5;
+    }
+    a{ text-decoration:none; color:inherit }
+
+    /* HEADER */
+    .top-header{
+      background:var(--surface);
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      position:sticky;
+      top:0;
+      z-index:120;
+    }
+    .header-inner{
+      max-width:var(--max-width);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 16px;
+      flex-wrap:wrap;
+    }
+    .logo{font-weight:800;color:var(--accent);font-size:1.15rem;display:flex;align-items:center;gap:8px}
+    .nav-links{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .nav-links a{
+      display:inline-block;
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      font-weight:600;
+      transition:all .18s ease;
+    }
+    .nav-links a:hover{ background:var(--accent); color:#000; transform:translateY(-2px); border-color:var(--accent-dark) }
+    .nav-links a.active{ background:var(--accent); color:#000; border-color:var(--accent-dark) }
+    .menu-toggle{ display:none; background:transparent; border:1px solid var(--accent); color:var(--accent); padding:6px 8px; border-radius:8px; cursor:pointer; font-weight:700; }
+
+    /* CART LAYOUT */
+    .cart-container{
+      max-width:var(--max-width);
+      margin:24px auto;
+      padding:0 16px;
+    }
+    h1{ color:var(--accent); margin-bottom:16px; }
+
+    .cart-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-bottom:20px;
+    }
+    .cart-table th, .cart-table td{
+      padding:12px 8px;
+      text-align:left;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      vertical-align:middle;
+    }
+    .cart-table th{ color:var(--accent); font-weight:700; }
+    .cart-table td img{ width:60px; height:60px; object-fit:cover; border-radius:8px; }
+
+    .quantity-controls{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .quantity-controls button{
+      width:28px;
+      height:28px;
+      border:none;
+      border-radius:6px;
+      background:var(--accent);
+      color:#000;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .quantity-controls input{
+      width:40px;
+      text-align:center;
+      border-radius:6px;
+      border:1px solid rgba(255,255,255,0.2);
+      background:var(--card);
+      color:var(--muted);
+      padding:4px;
+    }
+
+    .remove-btn{
+      background:#e74c3c;
+      border:none;
+      border-radius:6px;
+      color:#fff;
+      padding:6px 10px;
+      cursor:pointer;
+    }
+
+    .total-container{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:16px;
+      font-size:1.1rem;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+    .checkout-btn{
+      background:var(--success);
+      border:none;
+      padding:12px 20px;
+      border-radius:8px;
+      font-weight:700;
+      color:#fff;
+      cursor:pointer;
+      font-size:1rem;
+    }
+
+    /* FOOTER */
+    footer{
+      margin-top:24px;
+      border-top:1px solid rgba(255,255,255,0.03);
+      padding:20px 16px;
+      text-align:center;
+      color:var(--muted);
+      background:transparent;
+    }
+    footer a{ color:var(--accent); text-decoration:none; font-weight:700; margin:0 6px }
+
+    /* RESPONSIVE */
+    @media (max-width:720px){
+      .cart-table th, .cart-table td{ font-size:0.9rem; padding:8px 6px; }
+      .quantity-controls button{ width:24px; height:24px; font-size:0.9rem; }
+      .quantity-controls input{ width:32px; }
+    }
+    /* Product cell layout for small/medium screens */
+@media (max-width:820px) {
+  .cart-table td:first-child {
+    display: flex;
+    flex-direction: column; /* stack name on top of image */
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cart-table td:first-child img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width:480px) {
+  .cart-table td:first-child img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="top-header">
+    <div class="header-inner">
+      <div class="logo">⚽ Fourty Four Predictors</div>
+      <nav class="nav-links">
+        <a href="shop.html">Shop</a>
+        <a href="cart.html" class="active">Cart</a>
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button id="menuToggle" class="menu-toggle">☰</button>
+    </div>
+  </header>
+
+  <!-- CART -->
+  <div class="cart-container">
+    <h1>Shopping Cart</h1>
+    <table class="cart-table" id="cartTable">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample products, you can generate dynamically -->
+        <tr data-price="2000">
+          <td>
+            <img src="image/chelsea-blue-long-sleeve.jpeg" alt="Football Jersey"> Football Jersey
+          </td>
+          <td>Ksh 2,000</td>
+          <td>
+            <div class="quantity-controls">
+              <button class="minus">-</button>
+              <input type="number" value="1" min="1">
+              <button class="plus">+</button>
+            </div>
+          </td>
+          <td class="subtotal">Ksh 2,000</td>
+          <td><button class="remove-btn">Remove</button></td>
+        </tr>
+        <tr data-price="4500">
+          <td>
+            <img src="image/football-boots.jpeg" alt="Football Shoes"> Football Shoes
+          </td>
+          <td>Ksh 4,500</td>
+          <td>
+            <div class="quantity-controls">
+              <button class="minus">-</button>
+              <input type="number" value="1" min="1">
+              <button class="plus">+</button>
+            </div>
+          </td>
+          <td class="subtotal">Ksh 4,500</td>
+          <td><button class="remove-btn">Remove</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-container">
+      <div>Total: <span id="cartTotal">Ksh 6,500</span></div>
+     <a href="shop-checkout.html" class="checkout-btn" style="display:inline-block;text-align:center;text-decoration:none;">Checkout</a>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="premium.html">Premium</a>
+    </div>
+    <div>© 2025 Fourty Four Predictors — All Rights Reserved.</div>
+  </footer>
+
+  <script>
+    function updateTotals() {
+      const rows = document.querySelectorAll('#cartTable tbody tr');
+      let total = 0;
+      rows.forEach(row => {
+        const price = parseFloat(row.dataset.price);
+        const qty = parseInt(row.querySelector('input').value);
+        const subtotalCell = row.querySelector('.subtotal');
+        const subtotal = price * qty;
+        subtotalCell.textContent = 'Ksh ' + subtotal.toLocaleString();
+        total += subtotal;
+      });
+      document.getElementById('cartTotal').textContent = 'Ksh ' + total.toLocaleString();
+    }
+
+    document.querySelectorAll('.plus').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const input = e.target.closest('td').querySelector('input');
+        input.value = parseInt(input.value) + 1;
+        updateTotals();
+      });
+    });
+
+    document.querySelectorAll('.minus').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const input = e.target.closest('td').querySelector('input');
+        if(parseInt(input.value) > 1){
+          input.value = parseInt(input.value) - 1;
+          updateTotals();
+        }
+      });
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const row = e.target.closest('tr');
+        row.remove();
+        updateTotals();
+      });
+    });
+
+    // Initial total
+    updateTotals();
+  </script>
+</body>
+</html>

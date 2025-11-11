@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Fourty Four Predictors</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    :root{
+      --bg:#0d0d0d;
+      --surface:#121212;
+      --card:#1b1b1b;
+      --muted:#bfc8cf;
+      --accent:#ffcc00;
+      --accent-dark:#e6b800;
+      --success:#2ecc71;
+      --radius:10px;
+      --max-width:1200px;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #f1f1f1;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== HEADER ===== */
+    .top-header {
+      background-color: #111;
+      border-bottom: 1px solid #222;
+      color: #f1f1f1;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #ffcc00;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a{
+      display:inline-block;
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      font-weight:600;
+      transition:all .18s ease;
+      text-align: center;
+    }
+    .nav-links a:hover{ background:var(--accent); color:#000; transform:translateY(-2px); border-color:var(--accent-dark) }
+    .nav-links a.active{ background:var(--accent); color:#000; border-color:var(--accent-dark) }
+
+    /* ===== MOBILE MENU BUTTON ===== */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+      font-size: 1.3rem;
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    /* ===== RESPONSIVE FIXED MENU ===== */
+    @media (max-width: 992px) {
+      .menu-toggle {
+        display: block;
+        z-index: 1002;
+      }
+
+      .header-container {
+        position: relative;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #111;
+        flex-direction: column;
+        text-align: left;
+        padding: 1.5rem;
+        border-top: 1px solid #222;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+        transform: translateY(-120%);
+        transition: transform 0.3s ease;
+        z-index: 1001;
+      }
+
+      .nav-links.show {
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 0.8rem 0;
+        border-radius: 999px;
+        text-align: center;
+        background: rgba(255,255,255,0.05);
+        margin-bottom: 8px;
+      }
+
+      .about-section {
+        margin-top: 6rem;
+      }
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about-section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.15);
+    }
+
+    .about-section h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #ffcc00;
+      margin-bottom: 1rem;
+    }
+
+    .about-section p {
+      line-height: 1.8;
+      color: #ccc;
+      margin-bottom: 1rem;
+      text-align: justify;
+    }
+
+    .team-section {
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+
+    .team-section h2 {
+      color: #ffcc00;
+      margin-bottom: 1.5rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .team-member {
+      background: #111;
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+    }
+
+    .team-member img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #ffcc00;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .team-member h4 {
+      color: #ffcc00;
+      margin: 5px 0;
+    }
+
+    .team-member p {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      background: #111;
+      padding: 1.5rem;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid #222;
+      margin-top: 3rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="logo">⚽ Fourty Four Predictors</div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuToggle" class="menu-toggle">☰</button>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="premium-page.html">VIP Tips</a>
+        <a href="history-page.html">Prediction History</a>
+        <a href="shop.html">Shop With Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html" class="active">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section class="about-section">
+    <h1>About Fourty Four Predictors</h1>
+    <p>
+      Welcome to <strong>Fourty Four Predictors</strong> — your trusted football prediction partner.
+      Our platform is dedicated to helping fans and bettors make smart and informed football betting decisions.
+      We analyze match statistics, player performance, and expert insights to provide accurate daily 15 predictions.
+    </p>
+    <p>
+      Our mission is simple — to deliver reliable, data-driven match tips that give you the edge in your betting experience.
+      Whether you're following the Premier League, La Liga, Serie A, or any other league, we’ve got you covered.
+    </p>
+    <p>
+      We focus on transparency, consistency, and value — bringing you winning predictions every single day.
+      Join thousands of users who trust our platform and never miss a match update again!
+    </p>
+
+    <div class="team-section">
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="image/team1.jpeg" alt="Team Member">
+          <h4>Josh Ruto</h4>
+          <p>Founder & Analyst</p>
+        </div>
+        <div class="team-member">
+          <img src="image/team2.jpeg" alt="Team Member">
+          <h4>Mary Wanjiku</h4>
+          <p>Lead Data Expert</p>
+        </div>
+        <div class="team-member">
+          <img src="image/team3.jpeg" alt="Team Member">
+          <h4>Brian Otieno</h4>
+          <p>Match Researcher</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Fourty Four Predictors — All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+  </script>
+
+</body>
+</html>

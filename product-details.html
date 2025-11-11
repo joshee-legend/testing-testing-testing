@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product Details | Fourty Four Predictors</title>
+  <style>
+    :root{
+      --bg:#0d0d0d; --card:#1b1b1b; --accent:#ffcc00; --muted:#c7d0d7; --radius:10px;
+    }
+    body{margin:0;font-family:Poppins,system-ui;background:var(--bg);color:#eef2f5}
+    .wrap{max-width:980px;margin:28px auto;padding:18px}
+    .back{display:inline-block;margin-bottom:14px;color:var(--muted);text-decoration:none}
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .media{flex:1;min-width:260px;max-width:420px}
+    .media img{width:100%;border-radius:8px;display:block}
+    .info{flex:1;min-width:240px}
+    .title{color:var(--accent);font-weight:800;font-size:1.35rem;margin:0 0 10px}
+    .desc{color:var(--muted);line-height:1.6;margin-bottom:12px}
+    .price{color:var(--accent);font-weight:800;margin-bottom:14px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{padding:10px 14px;border-radius:8px;border:0;font-weight:700;cursor:pointer}
+    .btn.buy{background:var(--accent);color:#111}
+    .btn.add{background:#2ecc71;color:#fff}
+    .notfound{padding:18px;background:#2b2b2b;border-radius:8px;color:#ffb3b3}
+    footer{max-width:980px;margin:26px auto;color:#9aa3ad;text-align:center;font-size:14px}
+    @media(max-width:700px){ .card{flex-direction:column} .media{max-width:100%} }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <a href="shop.html" class="back">← Back to shop</a>
+
+    <div id="productArea" class="card" role="region" aria-live="polite">
+      <!-- content populated by JS -->
+      <div class="notfound">Loading product...</div>
+    </div>
+  </div>
+
+  <footer>© 2025 Fourty Four Predictors — All Rights Reserved.</footer>
+
+  <script>
+    // ---------- sample product data ----------
+    const products = [
+      { id: 1, name: "Football Jersey", price: "Ksh 2,000", image: "image/football-boots.jpeg", description: "High-quality breathable football jersey suitable for training and matches. Available in sizes S-XXL." },
+      { id: 2, name: "Football Shoes", price: "Ksh 4,500", image: "image/football-boots.jpeg", description: "Durable studs, comfortable fit, perfect for firm ground play." },
+      { id: 3, name: "Mini Pool Table", price: "Ksh 35,000", image: "image/pool-table.jpg", description: "Compact pool table ideal for home entertainment." },
+      { id: 4, name: "Hockey Stick", price: "Ksh 3,000", image: "image/hockey-stick.jpg", description: "Lightweight carbon composite stick for precision and power." }
+    ];
+
+    // ---------- helper: get numeric id param ----------
+    function getProductIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const raw = params.get('id');
+      if (!raw) return null;
+      const n = Number(raw);
+      return Number.isFinite(n) && n > 0 ? n : null;
+    }
+
+    // ---------- render product or error ----------
+    (function render() {
+      const id = getProductIdFromUrl();
+      const container = document.getElementById('productArea');
+
+      if (!id) {
+        container.innerHTML = '<div class="notfound">No product selected. Please go back to the shop and choose an item.</div>';
+        return;
+      }
+
+      const product = products.find(p => p.id === id);
+
+      if (!product) {
+        container.innerHTML = '<div class="notfound">Product not found (invalid id). Please return to the shop.</div>';
+        console.warn('Product not found for id:', id);
+        return;
+      }
+
+      // build markup
+      container.innerHTML = `
+        <div class="media"><img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}"></div>
+        <div class="info">
+          <h1 class="title">${escapeHtml(product.name)}</h1>
+          <div class="desc">${escapeHtml(product.description)}</div>
+          <div class="price">${escapeHtml(product.price)}</div>
+          <div class="actions">
+            <button class="btn add" id="addBtn">Add to Cart</button>
+           <a href="shop-checkout.html" class="btn buy" style="display:inline-block;text-align:center;text-decoration:none;background:var(--accent);color:#111">Buy Now</a>
+          </div>
+        </div>
+      `;
+
+      // attach simple click handlers (stubs)
+      document.getElementById('addBtn').addEventListener('click', () => {
+        alert(`${product.name} added to cart (demo).`);
+      });
+      document.getElementById('buyBtn').addEventListener('click', () => {
+        alert(`Proceed to buy ${product.name} (demo).`);
+      });
+    })();
+
+    // small helper to avoid injecting raw HTML
+    function escapeHtml(s) {
+      if (typeof s !== 'string') return s;
+      return s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+    }
+  </script>
+</body>
+</html>

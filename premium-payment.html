@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join VIP | Fourty Four Predictors</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #f1f1f1;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== HEADER ===== */
+    .top-header {
+      background-color: #111;
+      border-bottom: 1px solid #222;
+      color: #f1f1f1;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex-wrap: nowrap;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #ffcc00;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ffcc00;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+      font-size: 1.3rem;
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { 
+        display: block; 
+      }
+
+      .header-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #111;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem 0;
+        border-top: 1px solid #222;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        transform: translateY(-500px);
+        transition: transform 0.3s ease;
+        z-index: 999;
+      }
+
+      .nav-links.show {
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        padding: 0.8rem 0;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(145deg, #1a1a1a, #111);
+      border-bottom: 1px solid #222;
+    }
+
+    .hero h1 {
+      color: #ffcc00;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ===== PRICING PLANS ===== */
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+
+    .plan-card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 2rem 1rem;
+      text-align: center;
+      border: 2px solid #222;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.05);
+      transition: 0.3s;
+    }
+
+    .plan-card:hover,
+    .plan-card.active {
+      border-color: #ffcc00;
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .plan-card h3 {
+      color: #ffcc00;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-card .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: #bbb;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .plan-card button {
+      margin-top: 1rem;
+      background: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 0.7rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .plan-card button:hover {
+      background: #e6b800;
+    }
+
+    /* ===== PAYMENT SECTION ===== */
+    .payment-section {
+      max-width: 700px;
+      margin: 3rem auto;
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+    }
+
+    .payment-section h2 {
+      color: #ffcc00;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .payment-section label {
+      display: block;
+      color: #ccc;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .payment-section input,
+    .payment-section select {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 1rem;
+      background: #111;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .pay-btn {
+      display: block;
+      width: 100%;
+      background: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .pay-btn:hover {
+      background: #e6b800;
+      transform: scale(1.03);
+    }
+
+    footer {
+      background: #111;
+      padding: 1.5rem;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid #222;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="logo">⚽ Fourty Four Predictors</div>
+      <button id="menuToggle" class="menu-toggle">☰</button>
+      <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="history-page.html">History</a>
+        <a href="premium-page.html">Premium</a>
+        <a href="premium-payment.html" class="active">Join VIP</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <h1>Upgrade to VIP Access</h1>
+    <p>Choose a plan that fits your needs and unlock exclusive daily premium odds, insider analysis, and priority access to expert predictions.</p>
+  </section>
+
+  <!-- ===== PLANS ===== -->
+  <section class="plans">
+    <div class="plan-card" data-plan="daily">
+      <h3>Daily VIP</h3>
+      <p class="price">1$ / KSh 130</p>
+      <ul>
+        <li>✔ 1-Day Access</li>
+        <li>✔ 5 Premium Predictions</li>
+        <li>✔ Expert Analysis</li>
+      </ul>
+      <button>Select</button>
+    </div>
+
+    <div class="plan-card active" data-plan="weekly">
+      <h3>Weekly VIP</h3>
+      <p class="price">$3 / KSh 500</p>
+      <ul>
+        <li>✔ 7-Day Access</li>
+        <li>✔ 35+ VIP Predictions</li>
+        <li>✔ Free Weekend Bonus</li>
+      </ul>
+      <button>Select</button>
+    </div>
+
+    <div class="plan-card" data-plan="monthly">
+      <h3>Monthly VIP</h3>
+      <p class="price">$14 / KSh 1500</p>
+      <ul>
+        <li>✔ 30-Day Access</li>
+        <li>✔ Full Access to All VIP Matches</li>
+        <li>✔ Premium Customer Support</li>
+      </ul>
+      <button>Select</button>
+    </div>
+  </section>
+
+  <!-- ===== PAYMENT SECTION ===== -->
+  <section class="payment-section">
+    <h2>Proceed to Payment</h2>
+
+    <form id="paymentForm">
+      <label for="plan">Selected Plan:</label>
+      <input type="text" id="plan" value="Weekly VIP" readonly>
+
+      <label for="method">Payment Method:</label>
+      <select id="method">
+        <option value="mpesa">M-Pesa</option>
+        <option value="paypal">PayPal</option>
+        <option value="card">Credit/Debit Card</option>
+      </select>
+
+      <label for="phone">Phone / Email:</label>
+      <input type="text" id="phone" placeholder="Enter phone or email" required>
+
+      <button type="submit" class="pay-btn">Pay Now</button>
+    </form>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Fourty Four Predictors — All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Responsive menu toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+
+    // Plan selection logic
+    const plans = document.querySelectorAll(".plan-card");
+    const planInput = document.getElementById("plan");
+
+    plans.forEach(plan => {
+      plan.querySelector("button").addEventListener("click", () => {
+        plans.forEach(p => p.classList.remove("active"));
+        plan.classList.add("active");
+        const name = plan.getAttribute("data-plan");
+        planInput.value =
+          name.charAt(0).toUpperCase() + name.slice(1) + " VIP";
+        window.scrollTo({ top: document.querySelector(".payment-section").offsetTop - 50, behavior: "smooth" });
+      });
+    });
+
+    // Payment simulation
+    document.getElementById("paymentForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const plan = planInput.value;
+      const method = document.getElementById("method").value;
+      alert(`Proceeding to pay for ${plan} via ${method.toUpperCase()}`);
+    });
+  </script>
+</body>
+</html>

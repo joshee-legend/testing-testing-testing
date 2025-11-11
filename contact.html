@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Fourty Four Predictors</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+     :root{
+      --bg:#0d0d0d;
+      --surface:#121212;
+      --card:#1b1b1b;
+      --muted:#bfc8cf;
+      --accent:#ffcc00;
+      --accent-dark:#e6b800;
+      --success:#2ecc71;
+      --radius:10px;
+      --max-width:1200px;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #f1f1f1;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ===== HEADER ===== */
+    .top-header {
+      background-color: #111;
+      border-bottom: 1px solid #222;
+      color: #f1f1f1;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #ffcc00;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a{
+      display:inline-block;
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      font-weight:600;
+      transition:all .18s ease;
+      align-items: center;
+    }
+
+    .nav-links a:hover{ background:var(--accent); color:#000; transform:translateY(-2px); border-color:var(--accent-dark) }
+    .nav-links a.active{ background:var(--accent); color:#000; border-color:var(--accent-dark) }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 2px solid #ffcc00;
+      color: #ffcc00;
+      font-size: 1.3rem;
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+      z-index: 1002;
+    }
+
+    /* ===== RESPONSIVE FIXED MENU ===== */
+    @media (max-width: 992px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .header-container {
+        position: relative;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #111;
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+        border-top: 1px solid #222;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.6);
+        transform: translateY(-120%);
+        transition: transform 0.3s ease;
+        z-index: 1001;
+      }
+
+      .nav-links.show {
+        transform: translateY(0);
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 0.8rem 0;
+        margin-bottom: 8px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.05);
+      }
+
+      .contact-section {
+        margin-top: 6rem;
+      }
+    }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact-section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.15);
+    }
+
+    .contact-section h1 {
+      text-align: center;
+      color: #ffcc00;
+      margin-bottom: 1rem;
+    }
+
+    .contact-section p {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+      color: #fff;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #ffcc00;
+      outline: none;
+      box-shadow: 0 0 8px rgba(255, 204, 0, 0.2);
+    }
+
+    .contact-form textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    .contact-form button {
+      background: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 0.9rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #e6b800;
+      transform: scale(1.03);
+    }
+
+    /* ===== CONTACT INFO ===== */
+    .contact-info {
+      margin-top: 3rem;
+      text-align: center;
+      color: #aaa;
+    }
+
+    .contact-info h3 {
+      color: #ffcc00;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      margin: 0.3rem 0;
+    }
+
+    .social-links {
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 0.6rem;
+      color: #ffcc00;
+      font-size: 1.3rem;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    footer {
+      background: #111;
+      padding: 1.5rem;
+      text-align: center;
+      color: #777;
+      border-top: 1px solid #222;
+      margin-top: 3rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="top-header">
+    <div class="header-container">
+      <div class="logo">⚽ Fourty Four Predictors</div>
+      <button id="menuToggle" class="menu-toggle">☰</button>
+
+      <nav class="nav-links" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop With Us</a>
+        <a href="premium-page.html">VIP Tips</a>
+        <a href="history-page.html">Prediction History</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html" class="active">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section class="contact-section">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you! Use the form below or reach us through our social media.</p>
+
+    <form class="contact-form" onsubmit="return false;">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <h3>Other Ways to Reach Us</h3>
+      <p>Email: support@fourtyfourpredictors.com</p>
+      <p>Telegram Channel: <a href="#" style="color:#ffcc00;">@FourtyFourPredictors</a></p>
+      <div class="social-links">
+        <a href="#" title="Telegram">📨</a>
+        <a href="#" title="Twitter">🐦</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Fourty Four Predictors — All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show");
+    });
+  </script>
+
+</body>
+</html>

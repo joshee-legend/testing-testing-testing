@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout | Fourty Four Predictors</title>
+  <style>
+    :root {
+      --bg:#0d0d0d;
+      --surface:#121212;
+      --card:#1b1b1b;
+      --muted:#bfc8cf;
+      --accent:#ffcc00;
+      --accent-dark:#e6b800;
+      --success:#2ecc71;
+      --radius:10px;
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box;}
+    body {
+      margin:0;
+      font-family:"Poppins", system-ui, sans-serif;
+      background:var(--bg);
+      color:#eef2f5;
+    }
+    a{text-decoration:none;color:inherit;}
+
+    /* HEADER */
+    .top-header {
+      background:var(--surface);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      position:sticky;top:0;z-index:100;
+    }
+    .header-inner {
+      max-width:var(--max-width);
+      margin:auto;
+      padding:12px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .logo{color:var(--accent);font-weight:700;font-size:1.2rem;}
+    .nav-links a {
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.02);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+      font-weight:600;
+      transition:all .2s ease;
+      margin-left:6px;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background:var(--accent);
+      color:#000;
+      border-color:var(--accent-dark);
+    }
+
+    /* CHECKOUT */
+    .checkout-container {
+      max-width:700px;
+      margin:40px auto;
+      background:var(--card);
+      padding:24px;
+      border-radius:var(--radius);
+      box-shadow:0 0 10px rgba(0,0,0,0.5);
+    }
+    h1 {
+      color:var(--accent);
+      text-align:center;
+      margin-bottom:20px;
+    }
+    .order-summary {
+      margin-bottom:24px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      padding-bottom:16px;
+    }
+    .order-summary p {
+      display:flex;
+      justify-content:space-between;
+      margin:6px 0;
+    }
+    .total {
+      font-weight:700;
+      color:var(--accent);
+      font-size:1.1rem;
+    }
+
+    .payment-methods {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-bottom:20px;
+    }
+    .payment-methods label {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      background:#111;
+      padding:10px 14px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+    .payment-methods input {
+      accent-color:var(--accent);
+    }
+
+    .payment-form {
+      display:none;
+      background:#111;
+      padding:16px;
+      border-radius:8px;
+      margin-bottom:20px;
+    }
+    .payment-form.active {
+      display:block;
+    }
+    .payment-form input {
+      width:100%;
+      padding:10px;
+      margin:8px 0;
+      border:none;
+      border-radius:6px;
+      background:#1e1e1e;
+      color:#fff;
+    }
+    .pay-btn {
+      width:100%;
+      background:var(--success);
+      border:none;
+      color:#fff;
+      font-weight:700;
+      padding:12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1rem;
+    }
+    .pay-btn:hover {
+      background:#27ae60;
+    }
+
+    footer {
+      border-top:1px solid rgba(255,255,255,0.05);
+      padding:20px;
+      text-align:center;
+      color:var(--muted);
+      margin-top:40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="top-header">
+    <div class="header-inner">
+      <div class="logo">⚽ Fourty Four Predictors</div>
+      <nav class="nav-links">
+        <a href="home-page.html">Home</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="premium.html">Premium</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CHECKOUT CONTAINER -->
+  <div class="checkout-container">
+    <h1>Checkout</h1>
+
+    <div class="order-summary">
+      <p><span>Football Jersey</span> <span>Ksh 2,000</span></p>
+      <p><span>Football Shoes</span> <span>Ksh 4,500</span></p>
+      <p class="total"><span>Total</span> <span>Ksh 6,500</span></p>
+    </div>
+
+    <h3>Select Payment Method</h3>
+    <div class="payment-methods">
+      <label><input type="radio" name="payment" value="mpesa"> M-Pesa</label>
+      <label><input type="radio" name="payment" value="paypal"> PayPal</label>
+      <label><input type="radio" name="payment" value="card"> Credit/Debit Card</label>
+    </div>
+
+    <!-- M-PESA FORM -->
+    <div class="payment-form" id="mpesa-form">
+      <h4>M-Pesa Payment</h4>
+      <input type="text" placeholder="Enter M-Pesa Number (e.g. 0712345678)">
+      <button class="pay-btn">Pay with M-Pesa</button>
+    </div>
+
+    <!-- PAYPAL FORM -->
+    <div class="payment-form" id="paypal-form">
+      <h4>PayPal Payment</h4>
+      <input type="email" placeholder="Enter PayPal Email">
+      <button class="pay-btn">Pay with PayPal</button>
+    </div>
+
+    <!-- CARD FORM -->
+    <div class="payment-form" id="card-form">
+      <h4>Card Payment</h4>
+      <input type="text" placeholder="Card Number">
+      <input type="text" placeholder="Expiry Date (MM/YY)">
+      <input type="text" placeholder="CVV">
+      <button class="pay-btn">Pay Now</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Fourty Four Predictors — All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const paymentRadios = document.querySelectorAll('input[name="payment"]');
+    const forms = {
+      mpesa: document.getElementById('mpesa-form'),
+      paypal: document.getElementById('paypal-form'),
+      card: document.getElementById('card-form')
+    };
+
+    paymentRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        Object.values(forms).forEach(f => f.classList.remove('active'));
+        forms[radio.value].classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
